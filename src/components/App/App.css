@@ -1,3 +1,8 @@
+:root {
+  --header-height: 75px;
+  --main-height: calc(100vh - var(--header-height));
+}
+
 .App {
   text-align: center;
 }
@@ -8,13 +13,17 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  height: var(--header-height);
+}
+
+.App-body {
+  height: var(--main-height);
 }
 
 .App-link {
