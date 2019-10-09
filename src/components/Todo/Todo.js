@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 
 import "./Todo.css";
 
-const Todo = (props) => <div className="todo"></div>;
-
-Todo.propTypes = {};
+const Todo = ({ text }) => <li className="todo">{text}</li>;
+Todo.propTypes = {
+	text: PropTypes.string.isRequired,
+	done: PropTypes.bool.isRequired,
+};
 
 export default Todo;
