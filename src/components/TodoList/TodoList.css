@@ -1,5 +1,5 @@
 .loading-logo {
-	animation: spin infinite 7s ease-out;
+	animation: spin infinite 7s ease-in-out;
 	height: 40vmin;
 	pointer-events: none;
 }
