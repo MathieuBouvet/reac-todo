@@ -16,6 +16,7 @@ class TodoList extends React.Component {
 		super(props);
 		this.state = {
 			todos: [],
+			todosLoaded: false,
 		};
 	}
 
