@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import "./TodoList.css";
 import logo from "../../assets/images/logo.svg";
 
+import Todo from "../Todo";
+
 import data from "../../utils/mockTodo";
 
 class TodoList extends React.Component {
@@ -41,7 +43,11 @@ class TodoList extends React.Component {
 				<p> Loading...</p>
 			</div>
 		) : (
-			<ul className="todos-loaded"></ul>
+			<ul className="todos-loaded">
+				{this.state.todos.map((todo) => (
+					<Todo key={todo._id} text={todo.text} done={todo.done} />
+				))}
+			</ul>
 		);
 	}
 }
