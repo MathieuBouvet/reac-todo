@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import "./TodoList.css";
 import logo from "../../assets/images/logo.svg";
 
+import data from "../../utils/mockTodo";
+
 class TodoList extends React.Component {
 	static propTypes = {
 		todos: PropTypes.arrayOf(
@@ -22,6 +24,15 @@ class TodoList extends React.Component {
 			todosLoaded: false,
 		};
 	}
+	componentDidMount() {
+		// TODO : consume API
+		setTimeout(() => {
+			this.setState({
+				todos: data,
+				todosLoaded: true,
+			});
+		}, 2500);
+	}
 
 	render() {
 		return !this.state.todosLoaded ? (
@@ -30,7 +41,7 @@ class TodoList extends React.Component {
 				<p> Loading...</p>
 			</div>
 		) : (
-			<div className="loaded"></div>
+			<ul className="todos-loaded"></ul>
 		);
 	}
 }
