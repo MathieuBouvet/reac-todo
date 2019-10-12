@@ -15,6 +15,19 @@
 .todo > .delete-todo-btn {
 	margin-left: auto;
 	cursor: pointer;
+	border-radius: 100%;
+	background-color: transparent;
+	border: 1px solid orange;
+	color: orange;
+	width: 25px;
+	height: 25px;
+	transition: 0.5s ease;
+}
+
+.todo > .delete-todo-btn:hover {
+	background-color: orange;
+	color: black;
+	border: 1px solid black;
 }
 
 .done-todo-btn {
