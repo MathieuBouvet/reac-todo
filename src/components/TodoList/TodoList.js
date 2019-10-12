@@ -25,15 +25,23 @@ class TodoList extends React.Component {
 		}, 2500);
 	}
 
-	doneTodoClick = (todoId) => {
-		this.setState({
-			todos: this.state.todos.map((elem) => {
-				if (elem._id === todoId) {
-					elem.done = true;
-				}
-				return elem;
-			}),
-		});
+	doneTodoClick = (e, todoId, type) => {
+		e.preventDefault();
+		e.stopPropagation();
+		if (type === "done") {
+			this.setState({
+				todos: this.state.todos.map((elem) => {
+					if (elem._id === todoId) {
+						elem.done = true;
+					}
+					return elem;
+				}),
+			});
+		} else if (type === "delete") {
+			this.setState({
+				todos: this.state.todos.filter((elem) => elem._id !== todoId),
+			});
+		}
 	};
 
 	render() {
@@ -50,7 +58,7 @@ class TodoList extends React.Component {
 						id={todo._id}
 						text={todo.text}
 						done={todo.done}
-						clickDone={this.doneTodoClick}
+						clicksTodo={this.doneTodoClick}
 					/>
 				))}
 			</ul>

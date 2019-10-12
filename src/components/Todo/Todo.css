@@ -9,10 +9,12 @@
 
 .todo.done > .todo-text {
 	text-decoration: line-through;
+	color: gray;
 }
 
 .todo > .delete-todo-btn {
 	margin-left: auto;
+	cursor: pointer;
 }
 
 .done-todo-btn {
