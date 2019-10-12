@@ -3,6 +3,8 @@
 	display: flex;
 	flex-flow: row nowrap;
 	margin-bottom: 15px;
+	padding: 5px;
+	cursor: default;
 }
 
 .todo.done > .todo-text {
@@ -11,4 +13,28 @@
 
 .todo > .delete-todo-btn {
 	margin-left: auto;
+}
+
+.done-todo-btn {
+	border-radius: 100%;
+	background-color: transparent;
+	border: 1px solid black;
+	width: 30px;
+	height: 30px;
+	transition: box-shadow 0.5s ease, background-color 0.25s ease;
+}
+.todo.done > .done-todo-btn {
+	background-color: rgba(9, 211, 172, 1);
+}
+.todo:not(.done) {
+	cursor: pointer;
+}
+.todo:not(.done):hover > .done-todo-btn {
+	box-shadow: 0 0 2px 3px rgba(9, 211, 172, 1);
+	cursor: pointer;
+}
+.todo-text {
+	padding-left: 15px;
+	display: flex;
+	align-items: center;
 }

@@ -4,10 +4,8 @@ import PropTypes from "prop-types";
 import "./Todo.css";
 
 const Todo = ({ id, text, done, clickDone }) => (
-	<li className={`todo ${done ? "done" : ""}`}>
-		<button className="done-todo-btn" onClick={() => clickDone(id)}>
-			✓
-		</button>
+	<li className={`todo ${done ? "done" : ""}`} onClick={() => clickDone(id)}>
+		<button className="done-todo-btn">{`${done ? "✓" : " "}`}</button>
 		<span className="todo-text">{text}</span>
 		<button className="delete-todo-btn">✗</button>
 	</li>
