@@ -19,7 +19,7 @@ const Todo = ({ id, text, done, clicksTodo }) => (
 	</li>
 );
 Todo.propTypes = {
-	id: PropTypes.number.isRequired,
+	id: PropTypes.string.isRequired,
 	text: PropTypes.string.isRequired,
 	done: PropTypes.bool.isRequired,
 	clicksTodo: PropTypes.func.isRequired,
