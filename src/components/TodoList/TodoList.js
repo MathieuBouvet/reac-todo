@@ -1,4 +1,5 @@
 import React from "react";
+import shortid from "shortid";
 
 import "./TodoList.css";
 import logo from "../../assets/images/logo.svg";
@@ -52,6 +53,20 @@ class TodoList extends React.Component {
 		});
 	};
 
+	createTodo = (e) => {
+		this.setState({
+			todos: [
+				...this.state.todos,
+				{
+					_id: shortid.generate(),
+					text: this.state.addTodoValue,
+					done: false,
+				},
+			],
+			addTodoValue: "",
+		});
+	};
+
 	render() {
 		return !this.state.todosLoaded ? (
 			<div className="loading">
@@ -74,6 +89,7 @@ class TodoList extends React.Component {
 				<AddTodo
 					addTodoValue={this.state.addTodoValue}
 					changeValue={this.addTodoValueChange}
+					addButtonClick={this.createTodo}
 				/>
 			</React.Fragment>
 		);
