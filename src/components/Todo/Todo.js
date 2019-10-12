@@ -5,8 +5,9 @@ import "./Todo.css";
 
 const Todo = ({ text, done }) => (
 	<li className="todo">
+		{!done && <button class="done-todo-btn">✓</button>}
 		{text}
-		{!done && <button>✓</button>}
+		<button class="delete-todo-btn">✗</button>
 	</li>
 );
 Todo.propTypes = {

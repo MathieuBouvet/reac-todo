@@ -1,0 +1,10 @@
+.todo {
+	list-style: none;
+	display: flex;
+	flex-flow: row nowrap;
+	margin-bottom: 15px;
+}
+
+.todo .delete-todo-btn {
+	margin-left: auto;
+}
