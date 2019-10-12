@@ -5,6 +5,9 @@
 * {
   box-sizing: border-box;
 }
+button {
+  outline: none;
+}
 .App {
   background-color: #282c34;
   color: white;
