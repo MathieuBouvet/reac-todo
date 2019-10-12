@@ -11,7 +11,7 @@ const AddTodo = ({ addTodoValue, changeValue, addButtonClick }) => (
 			value={addTodoValue}
 			onChange={(e) => changeValue(e)}
 		/>
-		<button className="add-todo-btn" onclick={(e) => addButtonClick(e)}>
+		<button className="add-todo-btn" onClick={(e) => addButtonClick(e)}>
 			＋
 		</button>
 	</div>
