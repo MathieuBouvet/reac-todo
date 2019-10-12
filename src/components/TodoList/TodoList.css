@@ -17,4 +17,5 @@
 	flex-flow: column;
 	max-width: 33vw;
 	margin: auto;
+	padding: 0;
 }

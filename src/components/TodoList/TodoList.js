@@ -4,6 +4,7 @@ import "./TodoList.css";
 import logo from "../../assets/images/logo.svg";
 
 import Todo from "../Todo";
+import AddTodo from "../AddTodo";
 
 import data from "../../utils/mockTodo";
 
@@ -13,6 +14,7 @@ class TodoList extends React.Component {
 		this.state = {
 			todos: [],
 			todosLoaded: false,
+			addTodoValue: "",
 		};
 	}
 	componentDidMount() {
@@ -44,6 +46,12 @@ class TodoList extends React.Component {
 		}
 	};
 
+	addTodoValueChange = (e) => {
+		this.setState({
+			addTodoValue: e.target.value,
+		});
+	};
+
 	render() {
 		return !this.state.todosLoaded ? (
 			<div className="loading">
@@ -51,17 +59,23 @@ class TodoList extends React.Component {
 				<p> Loading...</p>
 			</div>
 		) : (
-			<ul className="todos-loaded">
-				{this.state.todos.map((todo) => (
-					<Todo
-						key={todo._id}
-						id={todo._id}
-						text={todo.text}
-						done={todo.done}
-						clicksTodo={this.doneTodoClick}
-					/>
-				))}
-			</ul>
+			<React.Fragment>
+				<ul className="todos-loaded">
+					{this.state.todos.map((todo) => (
+						<Todo
+							key={todo._id}
+							id={todo._id}
+							text={todo.text}
+							done={todo.done}
+							clicksTodo={this.doneTodoClick}
+						/>
+					))}
+				</ul>
+				<AddTodo
+					addTodoValue={this.state.addTodoValue}
+					changeValue={this.addTodoValueChange}
+				/>
+			</React.Fragment>
 		);
 	}
 }
