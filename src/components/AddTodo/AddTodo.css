@@ -1,0 +1,29 @@
+.add-todo {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	width: 33vw;
+	margin: auto;
+	padding: 5px;
+}
+.add-todo-input {
+	width: 280px;
+	height: 30px;
+	border-radius: 5px;
+}
+.add-todo-btn {
+	width: 35px;
+	height: 35px;
+	border-radius: 100%;
+	color: green;
+	border: 2px solid green;
+	background-color: transparent;
+	margin-left: 15px;
+	font-weight: bold;
+	transition: 0.5s ease;
+}
+.add-todo-btn:hover {
+	background-color: green;
+	color: black;
+	border-color: black;
+}

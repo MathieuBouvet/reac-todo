@@ -11,7 +11,7 @@ const AddTodo = ({ addTodoValue, changeValue }) => (
 			value={addTodoValue}
 			onChange={(e) => changeValue(e)}
 		/>
-		<button className="add-todo-btn">+</button>
+		<button className="add-todo-btn">＋</button>
 	</div>
 );
 
