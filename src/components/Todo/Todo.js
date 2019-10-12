@@ -3,16 +3,20 @@ import PropTypes from "prop-types";
 
 import "./Todo.css";
 
-const Todo = ({ text, done }) => (
-	<li className="todo">
-		{!done && <button class="done-todo-btn">✓</button>}
-		{text}
-		<button class="delete-todo-btn">✗</button>
+const Todo = ({ id, text, done, clickDone }) => (
+	<li className={`todo ${done ? "done" : ""}`}>
+		<button className="done-todo-btn" onClick={() => clickDone(id)}>
+			✓
+		</button>
+		<span className="todo-text">{text}</span>
+		<button className="delete-todo-btn">✗</button>
 	</li>
 );
 Todo.propTypes = {
+	id: PropTypes.number.isRequired,
 	text: PropTypes.string.isRequired,
 	done: PropTypes.bool.isRequired,
+	clickDone: PropTypes.func.isRequired,
 };
 
 export default Todo;

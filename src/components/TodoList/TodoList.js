@@ -25,6 +25,17 @@ class TodoList extends React.Component {
 		}, 2500);
 	}
 
+	doneTodoClick = (todoId) => {
+		this.setState({
+			todos: this.state.todos.map((elem) => {
+				if (elem._id === todoId) {
+					elem.done = true;
+				}
+				return elem;
+			}),
+		});
+	};
+
 	render() {
 		return !this.state.todosLoaded ? (
 			<div className="loading">
@@ -34,7 +45,13 @@ class TodoList extends React.Component {
 		) : (
 			<ul className="todos-loaded">
 				{this.state.todos.map((todo) => (
-					<Todo key={todo._id} text={todo.text} done={todo.done} />
+					<Todo
+						key={todo._id}
+						id={todo._id}
+						text={todo.text}
+						done={todo.done}
+						clickDone={this.doneTodoClick}
+					/>
 				))}
 			</ul>
 		);
