@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import "./AddTodo.css";
 
-const AddTodo = ({ addTodoValue, changeValue }) => (
+const AddTodo = ({ addTodoValue, changeValue, addButtonClick }) => (
 	<div className="add-todo">
 		<input
 			className="add-todo-input"
@@ -11,13 +11,16 @@ const AddTodo = ({ addTodoValue, changeValue }) => (
 			value={addTodoValue}
 			onChange={(e) => changeValue(e)}
 		/>
-		<button className="add-todo-btn">＋</button>
+		<button className="add-todo-btn" onclick={(e) => addButtonClick(e)}>
+			＋
+		</button>
 	</div>
 );
 
 AddTodo.propTypes = {
 	addTodoValue: PropTypes.string.isRequired,
 	changeValue: PropTypes.func.isRequired,
+	addButtonClick: PropTypes.func.isRequired,
 };
 
 export default AddTodo;
