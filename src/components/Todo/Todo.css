@@ -6,15 +6,35 @@
   padding: 5px;
   padding-right: 9px;
   cursor: default;
+  position: relative;
+  animation: enter-slide 1s ease;
+}
+@keyframes enter-slide {
+  from {
+    left: -500px;
+  }
+  to {
+    left: 0;
+  }
+}
+@keyframes leave-slide {
+  from {
+    left: 0;
+  }
+  to {
+    left: 500px;
+  }
 }
 
 .todo.done > .todo-text {
   text-decoration: line-through;
   color: gray;
 }
+.todo.will-be-removed {
+  animation: leave-slide 1s ease;
+}
 
 .todo > .delete-todo-btn {
-	transition: 0.5s ease;
   margin-left: auto;
   cursor: pointer;
   border-radius: 100%;
@@ -23,6 +43,7 @@
   color: orange;
   width: 27px;
   height: 27px;
+  transition: 0.5s ease;
 }
 
 .todo > .delete-todo-btn:hover {
