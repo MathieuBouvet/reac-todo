@@ -11,8 +11,8 @@ class TodoList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: [],
       todosLoaded: false,
+      todos: JSON.parse(window.localStorage.getItem("todoList")) || [],
       addTodoValue: "",
     };
   }
