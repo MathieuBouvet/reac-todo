@@ -21,18 +21,34 @@ class TodoList extends React.Component {
     e.preventDefault();
     e.stopPropagation();
     if (type === "done") {
-      this.setState({
-        todos: this.state.todos.map(elem => {
-          if (elem._id === todoId) {
-            elem.done = true;
-          }
-          return elem;
-        }),
-      });
+      this.setState(
+        {
+          todos: this.state.todos.map(elem => {
+            if (elem._id === todoId) {
+              elem.done = true;
+            }
+            return elem;
+          }),
+        },
+        () => {
+          window.localStorage.setItem(
+            "todoList",
+            JSON.stringify(this.state.todos)
+          );
+        }
+      );
     } else if (type === "delete") {
-      this.setState({
-        todos: this.state.todos.filter(elem => elem._id !== todoId),
-      });
+      this.setState(
+        {
+          todos: this.state.todos.filter(elem => elem._id !== todoId),
+        },
+        () => {
+          window.localStorage.setItem(
+            "todoList",
+            JSON.stringify(this.state.todos)
+          );
+        }
+      );
     }
   };
 
@@ -43,17 +59,25 @@ class TodoList extends React.Component {
   };
 
   createTodo = e => {
-    this.setState({
-      todos: [
-        ...this.state.todos,
-        {
-          _id: shortid.generate(),
-          text: this.state.addTodoValue,
-          done: false,
-        },
-      ],
-      addTodoValue: "",
-    });
+    this.setState(
+      {
+        todos: [
+          ...this.state.todos,
+          {
+            _id: shortid.generate(),
+            text: this.state.addTodoValue,
+            done: false,
+          },
+        ],
+        addTodoValue: "",
+      },
+      () => {
+        window.localStorage.setItem(
+          "todoList",
+          JSON.stringify(this.state.todos)
+        );
+      }
+    );
   };
 
   render() {
