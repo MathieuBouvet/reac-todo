@@ -16,15 +16,6 @@ class TodoList extends React.Component {
       addTodoValue: "",
     };
   }
-  componentDidMount() {
-    // TODO : consume API
-    setTimeout(() => {
-      this.setState({
-        todos: data,
-        todosLoaded: true,
-      });
-    }, 2500);
-  }
 
   doneTodoClick = (e, todoId, type) => {
     e.preventDefault();
