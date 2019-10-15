@@ -75,6 +75,7 @@ class TodoList extends React.Component {
       </div>
     ) : (
       <React.Fragment>
+        {!this.state.todos.length && "Rien à faire ;)"}
         <ul className="todos-loaded">
           {this.state.todos.map(todo => (
             <Todo
