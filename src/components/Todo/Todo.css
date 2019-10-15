@@ -1,60 +1,60 @@
 .todo {
-	list-style: none;
-	display: flex;
-	flex-flow: row nowrap;
-	margin-bottom: 15px;
-	padding: 5px;
-	padding-right: 9px;
-	cursor: default;
+  list-style: none;
+  display: flex;
+  flex-flow: row nowrap;
+  margin-bottom: 15px;
+  padding: 5px;
+  padding-right: 9px;
+  cursor: default;
 }
 
 .todo.done > .todo-text {
-	text-decoration: line-through;
-	color: gray;
+  text-decoration: line-through;
+  color: gray;
 }
 
 .todo > .delete-todo-btn {
-	margin-left: auto;
-	cursor: pointer;
-	border-radius: 100%;
-	background-color: transparent;
-	border: 2px solid orange;
-	color: orange;
-	width: 27px;
-	height: 27px;
 	transition: 0.5s ease;
+  margin-left: auto;
+  cursor: pointer;
+  border-radius: 100%;
+  background-color: transparent;
+  border: 2px solid orange;
+  color: orange;
+  width: 27px;
+  height: 27px;
 }
 
 .todo > .delete-todo-btn:hover {
-	background-color: orange;
-	color: black;
-	border-color: black;
+  background-color: orange;
+  color: black;
+  border-color: black;
 }
 
 .done-todo-btn {
-	border-radius: 100%;
-	background-color: transparent;
-	border: 1px solid black;
-	width: 30px;
-	height: 30px;
-	font-weight: bolder;
-	transition: box-shadow 0.5s ease, background-color 0.25s ease,
-		border 0.25s ease;
+  border-radius: 100%;
+  background-color: transparent;
+  border: 1px solid black;
+  width: 30px;
+  height: 30px;
+  font-weight: bolder;
+  transition: box-shadow 0.5s ease, background-color 0.25s ease,
+    border 0.25s ease;
 }
 .todo.done > .done-todo-btn {
-	background-color: rgba(9, 211, 172, 1);
-	border-color: rgba(9, 211, 172, 1);
+  background-color: rgba(9, 211, 172, 1);
+  border-color: rgba(9, 211, 172, 1);
 }
 .todo:not(.done) {
-	cursor: pointer;
+  cursor: pointer;
 }
 .todo:not(.done):hover > .done-todo-btn {
-	box-shadow: inset 0 0 2px 3px rgba(9, 211, 172, 1);
-	border-color: transparent;
-	cursor: pointer;
+  box-shadow: inset 0 0 2px 3px rgba(9, 211, 172, 1);
+  border-color: transparent;
+  cursor: pointer;
 }
 .todo-text {
-	padding-left: 15px;
-	display: flex;
-	align-items: center;
+  padding-left: 15px;
+  display: flex;
+  align-items: center;
 }
