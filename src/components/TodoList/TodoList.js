@@ -15,7 +15,7 @@ class TodoList extends React.Component {
     this.state = {
       todos: [],
       todosLoaded: false,
-      addTodoValue: ""
+      addTodoValue: "",
     };
   }
   componentDidMount() {
@@ -23,7 +23,7 @@ class TodoList extends React.Component {
     setTimeout(() => {
       this.setState({
         todos: data,
-        todosLoaded: true
+        todosLoaded: true,
       });
     }, 2500);
   }
@@ -33,37 +33,37 @@ class TodoList extends React.Component {
     e.stopPropagation();
     if (type === "done") {
       this.setState({
-        todos: this.state.todos.map((elem) => {
+        todos: this.state.todos.map(elem => {
           if (elem._id === todoId) {
             elem.done = true;
           }
           return elem;
-        })
+        }),
       });
     } else if (type === "delete") {
       this.setState({
-        todos: this.state.todos.filter((elem) => elem._id !== todoId)
+        todos: this.state.todos.filter(elem => elem._id !== todoId),
       });
     }
   };
 
-  addTodoValueChange = (e) => {
+  addTodoValueChange = e => {
     this.setState({
-      addTodoValue: e.target.value
+      addTodoValue: e.target.value,
     });
   };
 
-  createTodo = (e) => {
+  createTodo = e => {
     this.setState({
       todos: [
         ...this.state.todos,
         {
           _id: shortid.generate(),
           text: this.state.addTodoValue,
-          done: false
-        }
+          done: false,
+        },
       ],
-      addTodoValue: ""
+      addTodoValue: "",
     });
   };
 
@@ -76,7 +76,7 @@ class TodoList extends React.Component {
     ) : (
       <React.Fragment>
         <ul className="todos-loaded">
-          {this.state.todos.map((todo) => (
+          {this.state.todos.map(todo => (
             <Todo
               key={todo._id}
               id={todo._id}

@@ -10,8 +10,8 @@ const Todo = ({ id, text, done, clicksTodo }) => {
       className={`todo ${done ? "done" : ""} ${
         willBeRemoved ? "will-be-removed" : ""
       }`}
-      onClick={(e) => clicksTodo(e, id, "done")}
-      onAnimationEnd={(e) => {
+      onClick={e => clicksTodo(e, id, "done")}
+      onAnimationEnd={e => {
         if (willBeRemoved && e.animationName === "leave-slide") {
           clicksTodo(e, id, "delete");
         }
@@ -21,7 +21,7 @@ const Todo = ({ id, text, done, clicksTodo }) => {
       <span className="todo-text">{text}</span>
       <button
         className="delete-todo-btn"
-        onClick={(e) => {
+        onClick={e => {
           e.stopPropagation();
           e.preventDefault();
           setWillBeRemoved(true);
@@ -36,7 +36,7 @@ Todo.propTypes = {
   id: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   done: PropTypes.bool.isRequired,
-  clicksTodo: PropTypes.func.isRequired
+  clicksTodo: PropTypes.func.isRequired,
 };
 
 export default Todo;

@@ -9,9 +9,9 @@ const AddTodo = ({ addTodoValue, changeValue, addButtonClick }) => (
       className="add-todo-input"
       type="text"
       value={addTodoValue}
-      onChange={(e) => changeValue(e)}
+      onChange={e => changeValue(e)}
     />
-    <button className="add-todo-btn" onClick={(e) => addButtonClick(e)}>
+    <button className="add-todo-btn" onClick={e => addButtonClick(e)}>
       ＋
     </button>
   </div>
@@ -20,7 +20,7 @@ const AddTodo = ({ addTodoValue, changeValue, addButtonClick }) => (
 AddTodo.propTypes = {
   addTodoValue: PropTypes.string.isRequired,
   changeValue: PropTypes.func.isRequired,
-  addButtonClick: PropTypes.func.isRequired
+  addButtonClick: PropTypes.func.isRequired,
 };
 
 export default AddTodo;
