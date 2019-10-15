@@ -1,21 +1,22 @@
 .loading-logo {
-	animation: spin infinite 7s ease-in-out;
-	height: 40vmin;
+  animation: spin infinite 7s ease-in-out;
+  height: 40vmin;
 }
 
 @keyframes spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .todos-loaded {
-	display: flex;
-	flex-flow: column;
-	max-width: 33vw;
-	margin: auto;
-	padding: 0;
+  display: flex;
+  flex-flow: column;
+  max-width: 33vw;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
 }
