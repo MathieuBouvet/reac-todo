@@ -7,8 +7,6 @@ import logo from "../../assets/images/logo.svg";
 import Todo from "../Todo";
 import AddTodo from "../AddTodo";
 
-import data from "../../utils/mockTodo";
-
 class TodoList extends React.Component {
   constructor(props) {
     super(props);
