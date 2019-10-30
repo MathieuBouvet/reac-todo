@@ -6,10 +6,14 @@ import "./Menu.css";
 const Menu = () => (
   <ul className="app-menu">
     <li className="menu-item">
-      <Link to="login">Sign In</Link>
+      <Link to="login">
+        <button>Sign In</button>
+      </Link>
     </li>
     <li className="menu-item">
-      <Link to="signup">Sign Up</Link>
+      <Link to="signup">
+        <button>Sign Up</button>
+      </Link>
     </li>
   </ul>
 );
