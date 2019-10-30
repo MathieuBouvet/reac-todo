@@ -2,6 +2,7 @@ import React from "react";
 
 import TodoList from "../../components/TodoList";
 import Menu from "./Menu";
+import SignIn from "../SignIn";
 import { Router, Link } from "@reach/router";
 
 import "./App.css";
@@ -18,6 +19,7 @@ function App() {
       <main className="App-body">
         <Router>
           <TodoList path="/" />
+          <SignIn path="login" />
         </Router>
       </main>
     </div>
