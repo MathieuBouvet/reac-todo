@@ -27,6 +27,10 @@ input {
   font-size: calc(10px + 2vmin);
   height: var(--header-height);
 }
+.app-title {
+  color: white;
+  text-decoration: none;
+}
 
 .App-body {
   height: var(--main-height);
