@@ -2,7 +2,7 @@ import React from "react";
 
 import TodoList from "../../components/TodoList";
 import Menu from "./Menu";
-import { Link } from "@reach/router";
+import { Router, Link } from "@reach/router";
 
 import "./App.css";
 
@@ -16,7 +16,9 @@ function App() {
         <Menu />
       </header>
       <main className="App-body">
-        <TodoList />
+        <Router>
+          <TodoList path="/" />
+        </Router>
       </main>
     </div>
   );
