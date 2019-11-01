@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import UserForm from "../UserForm";
+import { useFormik } from "formik";
+
+const validate = values => {};
+
 const SignIn = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const handleChange = (event, from) => {
-    if (from === "username") {
-      setUsername(event.target.value);
-    }
-    if (from === "password") {
-      setPassword(event.target.value);
-    }
-  };
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+    },
+    validate,
+    onSubmit: values => {},
+  });
   return (
-    <form method="POST" action="">
+    <form onSubmit={formik.onSubmit}>
       <UserForm
-        username={username}
-        password={password}
-        changeHandler={handleChange}
+        username={formik.values.username}
+        password={formik.values.password}
+        changeHandler={formik.handleChange}
       />
+      <button type="submit">Log In</button>
     </form>
   );
 };
