@@ -25,9 +25,10 @@ const SignIn = () => {
   return (
     <form onSubmit={formik.onSubmit}>
       <UserForm
-        username={formik.values.username}
-        password={formik.values.password}
-        changeHandler={formik.handleChange}
+        usernameFields={formik.getFieldProps("username")}
+        passwordFields={formik.getFieldProps("password")}
+        errors={formik.errors}
+        touched={formik.touched}
       />
       <button type="submit">Log In</button>
     </form>
