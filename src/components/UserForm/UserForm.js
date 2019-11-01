@@ -19,5 +19,13 @@ const fieldPropType = PropTypes.shape({
 UserForm.propTypes = {
   usernameFields: fieldPropType,
   passwordFields: fieldPropType,
+  errors: PropTypes.shape({
+    username: PropTypes.string,
+    password: PropTypes.string,
+  }),
+  touched: PropTypes.shape({
+    username: PropTypes.bool,
+    password: PropTypes.bool,
+  }),
 };
 export default UserForm;
