@@ -1,29 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const UserForm = ({ username, password, changeHandler }) => (
+const UserForm = ({ usernameFields, passwordFields, errors, touched }) => (
   <>
     <label htmlFor="username">Username :</label>
-    <input
-      type="text"
-      name="username"
-      id="username"
-      value={username}
-      onChange={e => changeHandler(e, "username")}
-    />
+    <input type="text" id="username" {...usernameFields} />
+    {touched.username && errors.username && <div>{errors.username}</div>}
     <label htmlFor="password">Password :</label>
-    <input
-      type="password"
-      name="password"
-      id="password"
-      value={password}
-      onChange={e => changeHandler(e, "password")}
-    />
+    <input type="password" id="password" {...passwordFields} />
+    {touched.password && errors.password && <div>{errors.password}</div>}
   </>
 );
+const fieldPropType = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+});
 UserForm.propTypes = {
-  username: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  changeHandler: PropTypes.func.isRequired,
+  usernameFields: fieldPropType,
+  passwordFields: fieldPropType,
 };
 export default UserForm;
