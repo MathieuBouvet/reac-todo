@@ -1,6 +1,6 @@
 import React from "react";
 import UserForm from "../UserForm";
-import { useFormik } from "formik";
+import useSendingForm from "../../utils/useSendingForm";
 
 const validate = values => {
   const errors = {};
@@ -14,14 +14,16 @@ const validate = values => {
 };
 
 const SignIn = () => {
-  const formik = useFormik({
-    initialValues: {
-      username: "",
-      password: "",
+  const formik = useSendingForm(
+    {
+      initialValues: {
+        username: "",
+        password: "",
+      },
+      validate,
     },
-    validate,
-    onSubmit: values => {},
-  });
+    "the route"
+  );
   return (
     <form onSubmit={formik.handleSubmit}>
       <UserForm
