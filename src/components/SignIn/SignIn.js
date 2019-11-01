@@ -23,7 +23,7 @@ const SignIn = () => {
     onSubmit: values => {},
   });
   return (
-    <form onSubmit={formik.onSubmit}>
+    <form onSubmit={formik.handleSubmit}>
       <UserForm
         usernameFields={formik.getFieldProps("username")}
         passwordFields={formik.getFieldProps("password")}
