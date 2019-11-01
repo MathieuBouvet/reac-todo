@@ -2,7 +2,16 @@ import React from "react";
 import UserForm from "../UserForm";
 import { useFormik } from "formik";
 
-const validate = values => {};
+const validate = values => {
+  const errors = {};
+  if (!values.username) {
+    errors.username = "Username Required";
+  }
+  if (!values.password) {
+    errors.password = "Password Required";
+  }
+  return errors;
+};
 
 const SignIn = () => {
   const formik = useFormik({
