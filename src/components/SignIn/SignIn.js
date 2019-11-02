@@ -25,7 +25,10 @@ const SignIn = () => {
     "http://localhost:3001/api/users/login"
   );
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form
+      className="form form-vertical login-form"
+      onSubmit={formik.handleSubmit}
+    >
       <UserForm
         usernameFields={formik.getFieldProps("username")}
         passwordFields={formik.getFieldProps("password")}

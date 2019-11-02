@@ -6,6 +6,7 @@ import SignIn from "../SignIn";
 import { Router, Link } from "@reach/router";
 
 import "./App.css";
+import "./forms.css";
 
 function App() {
   return (

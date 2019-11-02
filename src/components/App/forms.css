@@ -1,0 +1,10 @@
+.form {
+  text-align: left;
+}
+.form-vertical > * {
+  display: block;
+}
+
+input {
+  width: 100%;
+}
