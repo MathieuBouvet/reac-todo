@@ -1,4 +1,5 @@
 import React from "react";
+import { useFormik } from "formik";
 import UserForm from "../UserForm";
 import useSendingForm from "../../utils/useSendingForm";
 
@@ -14,16 +15,15 @@ const validate = values => {
 };
 
 const SignIn = () => {
-  const formik = useSendingForm(
-    {
-      initialValues: {
-        username: "",
-        password: "",
-      },
-      validate,
+  const formSending = useSendingForm("http://localhost:3001/api/users/login");
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
     },
-    "http://localhost:3001/api/users/login"
-  );
+    validate,
+    onSubmit: formSending.submitHandler,
+  });
   return (
     <form
       className="form form-vertical login-form"
