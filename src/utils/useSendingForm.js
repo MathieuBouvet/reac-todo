@@ -5,15 +5,15 @@ function useSendingForm(route, onSuccess, onError, fieldsToSend) {
   const [formState, setFormState] = useState({
     sending: false,
     error: "",
-    sendingSuccess: false,
+    sent: false,
   });
   return {
     ...formState,
     reset: () => {
-      setFormState({ sending: false, error: "", sendingSuccess: false });
+      setFormState({ sending: false, error: "", sent: false });
     },
     submitHandler: values => {
-      setFormState({ sending: true, error: "", sendingSuccess: false });
+      setFormState({ sending: true, error: "", sent: false });
       const fields = fieldsToSend
         ? fieldsToSend.reduce((acc, current) => {
             acc[current] = values[current];
@@ -23,13 +23,13 @@ function useSendingForm(route, onSuccess, onError, fieldsToSend) {
       axios
         .post(route, fields)
         .then(response => {
-          setFormState({ sending: false, error: "", sendingSuccess: true });
+          setFormState({ sending: false, error: "", sent: true });
           if (onSuccess) {
             onSuccess(response);
           }
         })
         .catch(error => {
-          setFormState({ sending: false, error, sendingSuccess: false });
+          setFormState({ sending: false, error, sent: false });
           if (onError) {
             onError(error);
           }
