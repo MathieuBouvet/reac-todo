@@ -29,7 +29,7 @@ function useSendingForm(route, onSuccess, onError, fieldsToSend) {
           }
         })
         .catch(error => {
-          setFormState({ sending: false, error, sent: false });
+          setFormState({ sending: false, error, sent: true });
           if (onError) {
             onError(error);
           }
