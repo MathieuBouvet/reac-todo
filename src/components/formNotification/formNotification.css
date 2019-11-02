@@ -1,0 +1,22 @@
+.form-notification {
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: #cdcdcd;
+  border-radius: 5px;
+  margin-top: 35px;
+  padding: 35px;
+}
+
+.form-notification-error {
+  background-color: #966b9d;
+}
+
+.form-notification-success {
+  background-color: #355834;
+  color: #cdcdcd;
+}
+
+.close-notification {
+  margin-left: auto;
+  cursor: pointer;
+}
