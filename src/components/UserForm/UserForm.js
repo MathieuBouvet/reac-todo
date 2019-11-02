@@ -3,12 +3,20 @@ import PropTypes from "prop-types";
 
 const UserForm = ({ usernameFields, passwordFields, errors, touched }) => (
   <>
-    <label htmlFor="username">Username :</label>
-    <input type="text" id="username" {...usernameFields} />
-    {touched.username && errors.username && <div>{errors.username}</div>}
-    <label htmlFor="password">Password :</label>
-    <input type="password" id="password" {...passwordFields} />
-    {touched.password && errors.password && <div>{errors.password}</div>}
+    <div className="form-group">
+      <label htmlFor="username">Username :</label>
+      <input type="text" id="username" {...usernameFields} />
+      {touched.username && errors.username && (
+        <div className="form-group-error">{errors.username}</div>
+      )}
+    </div>
+    <div className="form-group">
+      <label htmlFor="password">Password :</label>
+      <input type="password" id="password" {...passwordFields} />
+      {touched.password && errors.password && (
+        <div className="form-group-error">{errors.password}</div>
+      )}
+    </div>
   </>
 );
 const fieldPropType = PropTypes.shape({
