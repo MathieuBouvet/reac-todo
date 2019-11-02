@@ -1,18 +1,21 @@
 import { useFormik } from "formik";
 import axios from "axios";
 
-function useSendingForm(formikDataWithoutOnSubmit, route) {
+function useSendingForm(
+  formikDataWithoutOnSubmit,
+  route,
+  onSuccessCallback,
+  onErrorCallback
+) {
+  const onSuccess = onSuccessCallback || (resp => console.log(resp));
+  const onError = onErrorCallback || (err => console.log(err.response));
   return useFormik({
     ...formikDataWithoutOnSubmit,
     onSubmit: values => {
       axios
         .post(route, values)
-        .then(response => {
-          console.log(response);
-        })
-        .catch(error => {
-          console.log(error.response);
-        });
+        .then(onSuccess)
+        .catch(onError);
     },
   });
 }
