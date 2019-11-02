@@ -2,6 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import UserForm from "../UserForm";
 import useSendingForm from "../../utils/useSendingForm";
+import FormNotification from "../FormNotification";
 
 const validate = values => {
   const errors = {};
@@ -36,6 +37,12 @@ const SignIn = () => {
         touched={formik.touched}
       />
       <button type="submit">Log In</button>
+      {formSending.sent && (
+        <FormNotification
+          error={formSending.error}
+          closeHandler={formSending.reset}
+        />
+      )}
     </form>
   );
 };
