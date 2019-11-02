@@ -1,6 +1,6 @@
 import React from "react";
 import Proptypes from "prop-types";
-import "./formNotification.css";
+import "./FormNotification.css";
 
 function getMessage(error) {
   if (error === "") {
