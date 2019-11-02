@@ -9,6 +9,9 @@ function useSendingForm(route, onSuccess, onError, fieldsToSend) {
   });
   return {
     ...formState,
+    reset: () => {
+      setFormState({ sending: false, error: "", sendingSuccess: false });
+    },
     submitHandler: values => {
       setFormState({ sending: true, error: "", sendingSuccess: false });
       const fields = fieldsToSend
