@@ -17,6 +17,10 @@
 
 .form-group-error {
   height: var(--error-height);
+  color: #966b9d;
+}
+.form-group.has-error > input {
+  border-bottom-color: #966b9d;
 }
 
 input {
