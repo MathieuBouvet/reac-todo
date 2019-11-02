@@ -34,6 +34,8 @@ input {
 
 .App-body {
   height: var(--main-height);
+  max-width: 33vw;
+  margin: auto;
 }
 
 .App-link {
