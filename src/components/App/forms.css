@@ -36,4 +36,18 @@ input {
 
 button[type="submit"] {
   margin: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 35px;
+  background-color: transparent;
+  border: 2px solid cyan;
+  color: cyan;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: cyan;
+  border-color: black;
+  color: black;
 }
