@@ -5,6 +5,7 @@ import "./ResponseNotification.css";
 const defaultMessageConfig = {
   onSuccess: "Requête envoyée et traitée",
   onOther: "Erreur lors de l'envoi de la requête",
+  onTimeout: "Délai d'attente pour la requête dépassé",
   on400: "Erreur 400 : Bad Request",
   on401: "Erreur 401 : Unauthorized",
   on403: "Erreur 403 : Forbidden",
@@ -20,6 +21,9 @@ function getNotificationMessage(error, messageConfig) {
   const messages = messageConfig || defaultMessageConfig;
   if (error === "") {
     return getMessage("onSuccess", messages);
+  }
+  if (error.code === "ECONNABORTED") {
+    return getMessage("onTimeout", messages);
   }
   return error.response
     ? getMessage(`on${error.response.status}`, messages)
