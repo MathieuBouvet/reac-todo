@@ -32,6 +32,9 @@ const SignIn = () => {
         <ResponseNotification
           error={formSending.error}
           closeHandler={formSending.reset}
+          messageConfig={{
+            on401: "Identifiants incorrects",
+          }}
         />
       )}
     </form>
