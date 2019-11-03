@@ -1,6 +1,6 @@
 import React from "react";
 
-import TodoList from "../../components/TodoList";
+import TodoList from "../TodoList";
 import Menu from "./Menu";
 import SignIn from "../SignIn";
 import SignUp from "../SignUp";
