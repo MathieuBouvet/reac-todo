@@ -1,0 +1,8 @@
+@keyframes rotate-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.button-spinner {
+  animation: rotate-spinner 1s linear infinite;
+}
