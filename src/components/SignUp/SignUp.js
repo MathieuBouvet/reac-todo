@@ -1,10 +1,17 @@
 import React from "react";
 import { useFormik } from "formik";
+import useSendingForm from "../../utils/useSendingForm";
 import UserForm from "../UserForm";
 import validateUser from "../../utils/validateUser";
 import Button from "../Button";
 
 const SignUp = () => {
+  const formSending = useSendingForm(
+    "http://localhost:3001/api/users",
+    response => console.log(response),
+    error => console.log(error),
+    ["username", "password"]
+  );
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -18,12 +25,13 @@ const SignUp = () => {
       }
       return errors;
     },
+    onSubmit: formSending.submitHandler,
   });
   const confirmPasswordError = () =>
     formik.errors.confirmPassword &&
     (formik.touched.password || formik.touched.confirmPassword);
   return (
-    <form className="form form-vertical">
+    <form className="form form-vertical" onSubmit={formik.handleSubmit}>
       <UserForm
         usernameFields={formik.getFieldProps("username")}
         passwordFields={formik.getFieldProps("password")}
