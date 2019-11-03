@@ -1,6 +1,6 @@
 import React from "react";
 import Proptypes from "prop-types";
-import "./FormNotification.css";
+import "./ResponseNotification.css";
 
 function getMessage(error) {
   if (error === "") {
@@ -14,12 +14,12 @@ function getMessage(error) {
   }
 }
 
-const formNotification = ({ error, closeHandler }) => {
+const ResponseNotification = ({ error, closeHandler }) => {
   const message = getMessage(error);
   return (
     <div
-      className={`form-notification ${
-        error ? "form-notification-error" : "form-notification-success"
+      className={`response-notification ${
+        error ? "response-notification-error" : "response-notification-success"
       }`}
     >
       <div className="message">{message}</div>
@@ -30,7 +30,7 @@ const formNotification = ({ error, closeHandler }) => {
   );
 };
 
-formNotification.propTypes = {
+ResponseNotification.propTypes = {
   closeHandler: Proptypes.func.isRequired,
   error: Proptypes.oneOfType([
     Proptypes.string,
@@ -45,4 +45,4 @@ formNotification.propTypes = {
   ]).isRequired,
 };
 
-export default formNotification;
+export default ResponseNotification;

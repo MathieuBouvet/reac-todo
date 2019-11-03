@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import UserForm from "../UserForm";
 import useSendingForm from "../../utils/useSendingForm";
 import validateUser from "../../utils/validateUser";
-import FormNotification from "../FormNotification";
+import ResponseNotification from "../ResponseNotification";
 import Button from "../Button";
 
 const SignIn = () => {
@@ -29,7 +29,7 @@ const SignIn = () => {
       />
       <Button type="submit">Log In</Button>
       {formSending.sent && (
-        <FormNotification
+        <ResponseNotification
           error={formSending.error}
           closeHandler={formSending.reset}
         />

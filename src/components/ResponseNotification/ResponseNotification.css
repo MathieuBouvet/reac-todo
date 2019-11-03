@@ -1,4 +1,4 @@
-.form-notification {
+.response-notification {
   display: flex;
   flex-flow: row nowrap;
   background-color: #cdcdcd;
@@ -7,11 +7,11 @@
   padding: 35px;
 }
 
-.form-notification-error {
+.response-notification-error {
   background-color: #966b9d;
 }
 
-.form-notification-success {
+.response-notification-success {
   background-color: #355834;
   color: #cdcdcd;
 }
