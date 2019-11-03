@@ -1,6 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import UserForm from "../UserForm";
+import validateUser from "../../utils/validateUser";
 
 const SignUp = () => {
   const formik = useFormik({
@@ -8,6 +9,13 @@ const SignUp = () => {
       username: "",
       password: "",
       confirmPassword: "",
+    },
+    validate: values => {
+      const errors = validateUser(values);
+      if (values.confirmPassword !== values.password) {
+        errors.confirmPassword = "Must match password";
+      }
+      return errors;
     },
   });
   return (
