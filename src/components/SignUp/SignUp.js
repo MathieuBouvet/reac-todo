@@ -2,6 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import UserForm from "../UserForm";
 import validateUser from "../../utils/validateUser";
+import Button from "../Button";
 
 const SignUp = () => {
   const formik = useFormik({
@@ -22,7 +23,7 @@ const SignUp = () => {
     formik.errors.confirmPassword &&
     (formik.touched.password || formik.touched.confirmPassword);
   return (
-    <form className="form form-vertical" autoComplete="off">
+    <form className="form form-vertical">
       <UserForm
         usernameFields={formik.getFieldProps("username")}
         passwordFields={formik.getFieldProps("password")}
@@ -44,6 +45,7 @@ const SignUp = () => {
           </div>
         )}
       </div>
+      <Button type="submit">Sign Up</Button>
     </form>
   );
 };
