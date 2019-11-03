@@ -21,7 +21,7 @@ function useSendingForm(route, onSuccess, onError, fieldsToSend) {
           }, {})
         : values;
       axios
-        .post(route, fields)
+        .post(route, fields, { timeout: 5000 })
         .then(response => {
           setFormState({ sending: false, error: "", sent: true });
           if (onSuccess) {
