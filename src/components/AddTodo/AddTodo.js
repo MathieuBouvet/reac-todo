@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Button from "../Button";
 
 import "./AddTodo.css";
 
@@ -11,9 +12,13 @@ const AddTodo = ({ addTodoValue, changeValue, addButtonClick }) => (
       value={addTodoValue}
       onChange={e => changeValue(e)}
     />
-    <button className="add-todo-btn" onClick={e => addButtonClick(e)}>
+    <Button
+      primaryColor="green"
+      className="add-todo-btn"
+      onClick={e => addButtonClick(e)}
+    >
       ＋
-    </button>
+    </Button>
   </div>
 );
 

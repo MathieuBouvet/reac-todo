@@ -6,20 +6,12 @@
   padding: 5px;
 }
 .add-todo-btn {
+  padding: 0;
   flex: 1 0 auto;
   width: 35px;
   height: 35px;
   border-radius: 100%;
-  color: green;
-  border: 2px solid green;
-  background-color: transparent;
   margin-left: 15px;
   font-weight: bold;
   transition: 0.5s ease;
-  cursor: pointer;
-}
-.add-todo-btn:hover {
-  background-color: green;
-  color: black;
-  border-color: black;
 }
