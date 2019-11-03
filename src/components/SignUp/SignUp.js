@@ -18,6 +18,9 @@ const SignUp = () => {
       return errors;
     },
   });
+  const confirmPasswordError = () =>
+    formik.errors.confirmPassword &&
+    (formik.touched.password || formik.touched.confirmPassword);
   return (
     <form className="form form-vertical" autoComplete="off">
       <UserForm
@@ -26,13 +29,20 @@ const SignUp = () => {
         errors={formik.errors}
         touched={formik.touched}
       />
-      <div className="form-group">
+      <div
+        className={`form-group ${confirmPasswordError() ? "has-error" : ""}`}
+      >
         <label htmlFor="confirmPassword">Confirm password:</label>
         <input
           type="password"
           id="confirmPassword"
           {...formik.getFieldProps("confirmPassword")}
         />
+        {confirmPasswordError() && (
+          <div className="form-group-error">
+            {formik.errors.confirmPassword}
+          </div>
+        )}
       </div>
     </form>
   );
