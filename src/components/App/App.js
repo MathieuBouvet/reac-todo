@@ -3,6 +3,7 @@ import React from "react";
 import TodoList from "../../components/TodoList";
 import Menu from "./Menu";
 import SignIn from "../SignIn";
+import SignUp from "../SignUp";
 import { Router, Link } from "@reach/router";
 
 import "./App.css";
@@ -21,6 +22,7 @@ function App() {
         <Router>
           <TodoList path="/" />
           <SignIn path="login" />
+          <SignUp path="signup" />
         </Router>
       </main>
     </div>
