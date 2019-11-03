@@ -4,6 +4,7 @@ import useSendingForm from "../../utils/useSendingForm";
 import UserForm from "../UserForm";
 import validateUser from "../../utils/validateUser";
 import Button from "../Button";
+import ResponseNitification from "../ResponseNotification";
 
 const SignUp = () => {
   const formSending = useSendingForm(
@@ -54,6 +55,15 @@ const SignUp = () => {
         )}
       </div>
       <Button type="submit">Sign Up</Button>
+      {formSending.sent && (
+        <ResponseNitification
+          error={formSending.error}
+          closeHandler={formSending.reset}
+          messageConfig={{
+            on400: `${formik.values.username} est déjà pris`,
+          }}
+        />
+      )}
     </form>
   );
 };
