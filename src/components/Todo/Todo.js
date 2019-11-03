@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import Button from "../Button";
 
 import "./Todo.css";
 
@@ -19,7 +20,8 @@ const Todo = ({ id, text, done, clicksTodo }) => {
     >
       <button className="done-todo-btn">{`${done ? "✓" : " "}`}</button>
       <span className="todo-text">{text}</span>
-      <button
+      <Button
+        primaryColor="orange"
         className="delete-todo-btn"
         onClick={e => {
           e.stopPropagation();
@@ -28,7 +30,7 @@ const Todo = ({ id, text, done, clicksTodo }) => {
         }}
       >
         ✗
-      </button>
+      </Button>
     </li>
   );
 };
