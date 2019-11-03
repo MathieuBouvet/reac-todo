@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import UserForm from "../UserForm";
 import useSendingForm from "../../utils/useSendingForm";
 import FormNotification from "../FormNotification";
+import Button from "../Button";
 
 const validate = values => {
   const errors = {};
@@ -36,7 +37,7 @@ const SignIn = () => {
         errors={formik.errors}
         touched={formik.touched}
       />
-      <button type="submit">Log In</button>
+      <Button type="submit">Log In</Button>
       {formSending.sent && (
         <FormNotification
           error={formSending.error}
