@@ -2,20 +2,33 @@ import React from "react";
 import Proptypes from "prop-types";
 import "./ResponseNotification.css";
 
-function getMessage(error) {
-  if (error === "") {
-    return "Requete envoyée et traitée";
-  }
-  switch (error.response.status) {
-    case 401:
-      return "Identifiants incorrects";
-    default:
-      return "Erreur serveur. Veuillez rééssayer plus tard ou contacter le support utilisateur";
-  }
+const defaultMessageConfig = {
+  onSuccess: "Requête envoyée et traitée",
+  onOther: "Erreur lors de l'envoi de la requête",
+  on400: "Erreur 400 : Bad Request",
+  on401: "Erreur 401 : Unauthorized",
+  on403: "Erreur 403 : Forbidden",
+  on404: "Erreur 404 : Not Found",
+  on500: "Erreur 500 : Internal Server Error",
+};
+
+function getMessage(codeReceived, messages) {
+  return messages[codeReceived] || defaultMessageConfig[codeReceived];
 }
 
-const ResponseNotification = ({ error, closeHandler }) => {
-  const message = getMessage(error);
+function getNotificationMessage(error, messageConfig) {
+  const messages = messageConfig || defaultMessageConfig;
+  if (error === "") {
+    return getMessage("onSuccess", messages);
+  }
+  return (
+    getMessage(`on${error.response.status}`, messages) ||
+    getMessage("onOther", messages)
+  );
+}
+
+const ResponseNotification = ({ error, messageConfig, closeHandler }) => {
+  const message = getNotificationMessage(error, messageConfig);
   return (
     <div
       className={`response-notification ${
