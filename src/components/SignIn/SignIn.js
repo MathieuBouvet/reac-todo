@@ -2,19 +2,9 @@ import React from "react";
 import { useFormik } from "formik";
 import UserForm from "../UserForm";
 import useSendingForm from "../../utils/useSendingForm";
+import validateUser from "../../utils/validateUser";
 import FormNotification from "../FormNotification";
 import Button from "../Button";
-
-const validate = values => {
-  const errors = {};
-  if (!values.username) {
-    errors.username = "Username Required";
-  }
-  if (!values.password) {
-    errors.password = "Password Required";
-  }
-  return errors;
-};
 
 const SignIn = () => {
   const formSending = useSendingForm("http://localhost:3001/api/users/login");
@@ -23,7 +13,7 @@ const SignIn = () => {
       username: "",
       password: "",
     },
-    validate,
+    validate: validateUser,
     onSubmit: formSending.submitHandler,
   });
   return (
