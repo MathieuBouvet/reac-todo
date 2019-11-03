@@ -21,10 +21,9 @@ function getNotificationMessage(error, messageConfig) {
   if (error === "") {
     return getMessage("onSuccess", messages);
   }
-  return (
-    getMessage(`on${error.response.status}`, messages) ||
-    getMessage("onOther", messages)
-  );
+  return error.response
+    ? getMessage(`on${error.response.status}`, messages)
+    : getMessage("onOther", messages);
 }
 
 const ResponseNotification = ({ error, messageConfig, closeHandler }) => {
