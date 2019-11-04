@@ -5,6 +5,7 @@ import Menu from "./Menu";
 import SignIn from "../SignIn";
 import SignUp from "../SignUp";
 import { Router, Link } from "@reach/router";
+import Button from "../Button";
 
 import "./App.css";
 import "./forms.css";
@@ -37,7 +38,14 @@ function App() {
         <Link to="/" className="app-title">
           Todo
         </Link>
-        {!user.isLoggedIn && <Menu />}
+        {user.isLoggedIn ? (
+          <>
+            <span style={{ marginRight: "15px" }}>{user.username}</span>{" "}
+            <Button onClick={user.logOut}> Log Out </Button>
+          </>
+        ) : (
+          <Menu />
+        )}
       </header>
       <main className="App-body">
         <Router>
