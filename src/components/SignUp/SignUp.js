@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import useSendingForm from "../../utils/useSendingForm";
 import UserForm from "../UserForm";
 import validateUser from "../../utils/validateUser";
-import Button from "../Button";
+import SpinnerButton from "../SpinnerButton";
 import ResponseNitification from "../ResponseNotification";
 
 const SignUp = () => {
@@ -54,7 +54,13 @@ const SignUp = () => {
           </div>
         )}
       </div>
-      <Button type="submit">Sign Up</Button>
+      <SpinnerButton
+        spin={formSending.sending}
+        type="submit"
+        className="submit-signup"
+      >
+        Sign Up
+      </SpinnerButton>
       {formSending.sent && (
         <ResponseNitification
           error={formSending.error}
