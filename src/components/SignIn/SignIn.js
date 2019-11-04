@@ -27,7 +27,11 @@ const SignIn = () => {
         errors={formik.errors}
         touched={formik.touched}
       />
-      <SpinnerButton spin type="submit" className="submit-login">
+      <SpinnerButton
+        spin={formSending.sending}
+        type="submit"
+        className="submit-login"
+      >
         Log In
       </SpinnerButton>
       {formSending.sent && (
