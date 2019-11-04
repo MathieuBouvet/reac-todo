@@ -11,15 +11,18 @@ import "./forms.css";
 
 function useAuthentication() {
   const [user, setUser] = useState({
-    username: "",
-    token: "",
-    id: "",
+    username: localStorage.username || "",
+    token: localStorage.token || "",
+    id: localStorage.id || "",
   });
   return {
     ...user,
     isLoggedIn: user.username !== "" && user.token !== "" && user.id !== "",
     logIn: response => {
       const { username, token, user: id } = response.data;
+      localStorage.username = username;
+      localStorage.token = token;
+      localStorage.id = id;
       setUser({ username, token, id });
     },
     logOut: () => setUser({ username: "", token: "", id: "" }),
