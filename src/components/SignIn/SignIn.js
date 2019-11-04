@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useFormik } from "formik";
 import UserForm from "../UserForm";
 import useSendingForm from "../../utils/useSendingForm";
@@ -6,8 +7,11 @@ import validateUser from "../../utils/validateUser";
 import ResponseNotification from "../ResponseNotification";
 import SpinnerButton from "../SpinnerButton";
 
-const SignIn = () => {
-  const formSending = useSendingForm("http://localhost:3001/api/users/login");
+const SignIn = ({ signInSuccessHandler }) => {
+  const formSending = useSendingForm(
+    "http://localhost:3001/api/users/login",
+    signInSuccessHandler
+  );
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -45,6 +49,10 @@ const SignIn = () => {
       )}
     </form>
   );
+};
+
+SignIn.propTypes = {
+  signInSuccessHandler: PropTypes.func.isRequired,
 };
 
 export default SignIn;
