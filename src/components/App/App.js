@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import TodoList from "../TodoList";
 import Menu from "./Menu";
@@ -8,6 +8,19 @@ import { Router, Link } from "@reach/router";
 
 import "./App.css";
 import "./forms.css";
+
+function useAuthentication() {
+  const [user, setUser] = useState({
+    username: "",
+    token: "",
+  });
+  return {
+    ...user,
+    isLoggedIn: () => user.username !== "" && user.token !== "",
+    logIn: (username, token) => setUser({ username, token }),
+    logOut: () => setUser({ username: "", token: "" }),
+  };
+}
 
 function App() {
   return (
