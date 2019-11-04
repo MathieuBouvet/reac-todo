@@ -26,10 +26,13 @@ input {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   height: var(--header-height);
+  width: 33vw;
+  margin: auto;
 }
 .app-title {
   color: white;
   text-decoration: none;
+  margin-right: auto;
 }
 
 .App-body {
