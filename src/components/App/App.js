@@ -26,7 +26,12 @@ function useAuthentication() {
       localStorage.id = id;
       setUser({ username, token, id });
     },
-    logOut: () => setUser({ username: "", token: "", id: "" }),
+    logOut: () => {
+      localStorage.username = "";
+      localStorage.token = "";
+      localStorage.id = "";
+      setUser({ username: "", token: "", id: "" });
+    },
   };
 }
 
