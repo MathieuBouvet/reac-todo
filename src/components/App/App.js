@@ -13,28 +13,33 @@ function useAuthentication() {
   const [user, setUser] = useState({
     username: "",
     token: "",
+    id: "",
   });
   return {
     ...user,
-    isLoggedIn: () => user.username !== "" && user.token !== "",
-    logIn: (username, token) => setUser({ username, token }),
-    logOut: () => setUser({ username: "", token: "" }),
+    isLoggedIn: user.username !== "" && user.token !== "" && user.id !== "",
+    logIn: response => {
+      const { username, token, user: id } = response.data;
+      setUser({ username, token, id });
+    },
+    logOut: () => setUser({ username: "", token: "", id: "" }),
   };
 }
 
 function App() {
+  const user = useAuthentication();
   return (
     <div className="App">
       <header className="App-header">
         <Link to="/" className="app-title">
           Todo
         </Link>
-        <Menu />
+        {!user.isLoggedIn && <Menu />}
       </header>
       <main className="App-body">
         <Router>
           <TodoList path="/" />
-          <SignIn path="login" />
+          <SignIn path="login" signInSuccessHandler={user.logIn} />
           <SignUp path="signup" />
         </Router>
       </main>
