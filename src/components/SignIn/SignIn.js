@@ -4,7 +4,7 @@ import UserForm from "../UserForm";
 import useSendingForm from "../../utils/useSendingForm";
 import validateUser from "../../utils/validateUser";
 import ResponseNotification from "../ResponseNotification";
-import Button from "../Button";
+import SpinnerButton from "../SpinnerButton";
 
 const SignIn = () => {
   const formSending = useSendingForm("http://localhost:3001/api/users/login");
@@ -27,7 +27,9 @@ const SignIn = () => {
         errors={formik.errors}
         touched={formik.touched}
       />
-      <Button type="submit">Log In</Button>
+      <SpinnerButton spin type="submit" className="submit-login">
+        Log In
+      </SpinnerButton>
       {formSending.sent && (
         <ResponseNotification
           error={formSending.error}
