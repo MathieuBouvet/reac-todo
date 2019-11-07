@@ -98,6 +98,19 @@ class TodoList extends React.Component {
       .catch(error => console.log(error.response));
   };
 
+  pullTodoList = () => {
+    axios
+      .get(`http://localhost:3001/api/users/${this.props.user.id}`, {
+        timeout: 5000,
+        headers: { Authorization: `bearer ${this.props.user.token}` },
+      })
+      .then(response => {
+        const { todos } = response.data;
+        this.setState({ todos });
+      })
+      .catch(error => console.log(error));
+  };
+
   render() {
     return !this.state.todosLoaded ? (
       <div className="loading">
@@ -129,6 +142,13 @@ class TodoList extends React.Component {
           onClick={this.sendTodoList}
         >
           Save
+        </SpinnerButton>
+        <SpinnerButton
+          spin={this.state.sendingTodo}
+          primaryColor="yellow"
+          onClick={this.pullTodoList}
+        >
+          Update
         </SpinnerButton>
       </React.Fragment>
     );
