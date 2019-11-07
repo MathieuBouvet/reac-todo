@@ -1,11 +1,12 @@
 import React from "react";
 import shortid from "shortid";
-
+import axios from "axios";
 import "./TodoList.css";
 import logo from "../../assets/images/logo.svg";
 
 import Todo from "../Todo";
 import AddTodo from "../AddTodo";
+import Button from "../Button";
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -14,6 +15,9 @@ class TodoList extends React.Component {
       todos: JSON.parse(window.localStorage.getItem("todoList")) || [],
       todosLoaded: true,
       addTodoValue: "",
+      sendingTodo: false,
+      error: "",
+      todoListSent: false,
     };
   }
 
@@ -80,6 +84,17 @@ class TodoList extends React.Component {
     );
   };
 
+  sendTodoList = () => {
+    axios
+      .put(
+        `http://localhost:3001/api/users/${this.props.user.id}/todos`,
+        this.state.todos,
+        { timeout: 5000 }
+      )
+      .then(response => console.log(response))
+      .catch(error => console.log(error.response));
+  };
+
   render() {
     return !this.state.todosLoaded ? (
       <div className="loading">
@@ -105,6 +120,9 @@ class TodoList extends React.Component {
           changeValue={this.addTodoValueChange}
           addButtonClick={this.createTodo}
         />
+        <Button primaryColor="yellow" onClick={this.sendTodoList}>
+          Save
+        </Button>
       </React.Fragment>
     );
   }
