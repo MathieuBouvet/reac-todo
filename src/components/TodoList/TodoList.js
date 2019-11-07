@@ -6,7 +6,7 @@ import logo from "../../assets/images/logo.svg";
 
 import Todo from "../Todo";
 import AddTodo from "../AddTodo";
-import Button from "../Button";
+import SpinnerButton from "../SpinnerButton";
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -120,9 +120,13 @@ class TodoList extends React.Component {
           changeValue={this.addTodoValueChange}
           addButtonClick={this.createTodo}
         />
-        <Button primaryColor="yellow" onClick={this.sendTodoList}>
+        <SpinnerButton
+          spin={this.state.sendingTodo}
+          primaryColor="green"
+          onClick={this.sendTodoList}
+        >
           Save
-        </Button>
+        </SpinnerButton>
       </React.Fragment>
     );
   }
