@@ -56,7 +56,7 @@ function App() {
       </header>
       <main className="App-body">
         <Router>
-          <TodoList path="/" />
+          <TodoList path="/" user={user} />
           <SignIn path="login" signInSuccessHandler={user.logIn} />
           <SignUp path="signup" />
         </Router>
