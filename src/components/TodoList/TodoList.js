@@ -89,7 +89,10 @@ class TodoList extends React.Component {
       .put(
         `http://localhost:3001/api/users/${this.props.user.id}/todos`,
         this.state.todos,
-        { timeout: 5000 }
+        {
+          timeout: 5000,
+          headers: { Authorization: `bearer ${this.props.user.token}` },
+        }
       )
       .then(response => console.log(response))
       .catch(error => console.log(error.response));
