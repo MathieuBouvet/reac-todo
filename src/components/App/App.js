@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { navigate } from "@reach/router";
 import TodoList from "../TodoList";
 import Menu from "./Menu";
 import SignIn from "../SignIn";
@@ -25,12 +25,14 @@ function useAuthentication() {
       localStorage.token = token;
       localStorage.id = id;
       setUser({ username, token, id });
+      navigate("/");
     },
     logOut: () => {
       localStorage.username = "";
       localStorage.token = "";
       localStorage.id = "";
       setUser({ username: "", token: "", id: "" });
+      navigate("/");
     },
   };
 }
