@@ -68,7 +68,7 @@ class TodoList extends React.Component {
         todos: [
           ...this.state.todos,
           {
-            _id: shortid.generate(),
+            todoId: shortid.generate(),
             text: this.state.addTodoValue,
             done: false,
           },
@@ -110,8 +110,8 @@ class TodoList extends React.Component {
         <ul className="todos-loaded">
           {this.state.todos.map(todo => (
             <Todo
-              key={todo._id}
-              id={todo._id}
+              key={todo._id || todo.todoId}
+              id={todo._id || todo.todoId}
               text={todo.text}
               done={todo.done}
               clicksTodo={this.doneTodoClick}
