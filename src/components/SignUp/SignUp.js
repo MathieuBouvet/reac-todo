@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-import useSendingForm from "../../utils/useSendingForm";
+import useSendingForm from "../../hooks/useSendingForm";
 import UserForm from "../UserForm";
 import validateUser from "../../utils/validateUser";
 import SpinnerButton from "../SpinnerButton";

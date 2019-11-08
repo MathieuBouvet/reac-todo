@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useFormik } from "formik";
 import UserForm from "../UserForm";
-import useSendingForm from "../../utils/useSendingForm";
+import useSendingForm from "../../hooks/useSendingForm";
 import validateUser from "../../utils/validateUser";
 import ResponseNotification from "../ResponseNotification";
 import SpinnerButton from "../SpinnerButton";
