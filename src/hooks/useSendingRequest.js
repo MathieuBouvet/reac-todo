@@ -61,11 +61,14 @@ function useSendingRequest() {
       requestConfig.url = url;
       return this;
     },
+    headers(headers) {
+      requestConfig.headers = { ...requestConfig.headers, ...headers };
+      return this;
+    },
     bearer(token) {
-      requestConfig.headers = {
-        ...requestConfig.headers,
+      this.headers({
         Authorization: `Bearer ${token}`,
-      };
+      });
       return this;
     },
     onSuccess(callback) {
