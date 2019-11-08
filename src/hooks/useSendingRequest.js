@@ -14,7 +14,7 @@ function useSendingRequest(method, url) {
       method,
       url,
     }).finally(() =>
-      setRequestState({ loading: false, error: null, done: true })
+      setRequestState({ ...requestState, loading: false, done: true })
     );
   };
 
