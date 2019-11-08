@@ -16,7 +16,7 @@ function useSendingRequest() {
     done: false,
   });
 
-  const sendRequest = data => {
+  const send = data => {
     const config = { ...requestConfig, data };
     setRequestState({ loading: true, error: null, done: false });
     axios(config)
@@ -36,7 +36,7 @@ function useSendingRequest() {
 
   return {
     ...requestState,
-    sendRequest,
+    send,
     get(url) {
       requestConfig.method = "get";
       requestConfig.url = url;
