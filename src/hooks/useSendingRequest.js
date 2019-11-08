@@ -33,10 +33,14 @@ function useSendingRequest() {
         }
       });
   };
+  const reset = () => {
+    setRequestState({ loading: false, error: null, done: false });
+  };
 
   return {
     ...requestState,
     send,
+    reset,
     get(url) {
       requestConfig.method = "get";
       requestConfig.url = url;
