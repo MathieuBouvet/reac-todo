@@ -19,7 +19,7 @@ function getMessage(codeReceived, messages) {
 
 function getNotificationMessage(error, messageConfig) {
   const messages = messageConfig || defaultMessageConfig;
-  if (error === "") {
+  if (!error) {
     return getMessage("onSuccess", messages);
   }
   if (error.code === "ECONNABORTED") {
@@ -58,7 +58,7 @@ ResponseNotification.propTypes = {
         }).isRequired,
       }).isRequired,
     }),
-  ]).isRequired,
+  ]),
 };
 
 export default ResponseNotification;
