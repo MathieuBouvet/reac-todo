@@ -26,10 +26,7 @@ function useSendingRequest(method, url, onSuccess, onError) {
         if (onError) {
           onError(error);
         }
-      })
-      .finally(() =>
-        setRequestState({ ...requestState, loading: false, done: true })
-      );
+      });
   };
 
   return { ...requestState, sendRequest };
