@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-function useSendingRequest(method, url) {
+function useSendingRequest(method, url, onSuccess, onError) {
   const [requestState, setRequestState] = useState({
     loading: false,
     error: null,
@@ -14,9 +14,22 @@ function useSendingRequest(method, url) {
       method,
       url,
       data,
-    }).finally(() =>
-      setRequestState({ ...requestState, loading: false, done: true })
-    );
+    })
+      .then(response => {
+        setRequestState({ loading: false, error: null, done: true });
+        if (onSuccess) {
+          onSuccess(response);
+        }
+      })
+      .catch(error => {
+        setRequestState({ loading: false, error, done: true });
+        if (onError) {
+          onError(error);
+        }
+      })
+      .finally(() =>
+        setRequestState({ ...requestState, loading: false, done: true })
+      );
   };
 
   return { ...requestState, sendRequest };
