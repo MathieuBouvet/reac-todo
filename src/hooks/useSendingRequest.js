@@ -14,6 +14,7 @@ function useSendingRequest(method, url, onSuccess, onError) {
       method,
       url,
       data,
+      timeout: 5000,
     })
       .then(response => {
         setRequestState({ loading: false, error: null, done: true });
