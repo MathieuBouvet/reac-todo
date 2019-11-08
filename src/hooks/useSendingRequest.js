@@ -8,11 +8,12 @@ function useSendingRequest(method, url) {
     done: false,
   });
 
-  const sendRequest = () => {
+  const sendRequest = data => {
     setRequestState({ loading: true, error: null, done: false });
     axios({
       method,
       url,
+      data,
     }).finally(() =>
       setRequestState({ ...requestState, loading: false, done: true })
     );
