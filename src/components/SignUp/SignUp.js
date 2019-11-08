@@ -1,17 +1,14 @@
 import React from "react";
 import { useFormik } from "formik";
-import useSendingForm from "../../hooks/useSendingForm";
+import useSendingRequest from "../../hooks/useSendingRequest";
 import UserForm from "../UserForm";
 import validateUser from "../../utils/validateUser";
 import SpinnerButton from "../SpinnerButton";
 import ResponseNitification from "../ResponseNotification";
 
 const SignUp = () => {
-  const formSending = useSendingForm(
-    "http://localhost:3001/api/users",
-    response => console.log(response),
-    error => console.log(error),
-    ["username", "password"]
+  const formSending = useSendingRequest().post(
+    "http://localhost:3001/api/users"
   );
   const formik = useFormik({
     initialValues: {
@@ -26,7 +23,7 @@ const SignUp = () => {
       }
       return errors;
     },
-    onSubmit: formSending.submitHandler,
+    onSubmit: formSending.send,
   });
   const confirmPasswordError = () =>
     formik.errors.confirmPassword &&
@@ -55,13 +52,13 @@ const SignUp = () => {
         )}
       </div>
       <SpinnerButton
-        spin={formSending.sending}
+        spin={formSending.loading}
         type="submit"
         className="submit-signup"
       >
         Sign Up
       </SpinnerButton>
-      {formSending.sent && (
+      {formSending.done && (
         <ResponseNitification
           error={formSending.error}
           closeHandler={formSending.reset}
