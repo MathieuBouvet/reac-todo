@@ -14,6 +14,14 @@ const todoListReducer = (state, action) => {
       return state.filter(
         todoItem => action.id !== (todoItem._id || todoItem.tempId)
       );
+    case "COMPLETE_TODO":
+      return state.map(todoItem => {
+        const newTodoItem = { ...todoItem };
+        if (action.id === (newTodoItem._id || newTodoItem.tempId)) {
+          newTodoItem.done = true;
+        }
+        return newTodoItem;
+      });
     default:
       return state;
   }
