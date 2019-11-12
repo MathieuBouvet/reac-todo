@@ -17,6 +17,18 @@ const TodoListDummy = ({ todoList, dispatch }) => {
             id={todoItem._id || todoItem.tempId}
             done={todoItem.done}
             text={todoItem.text}
+            onClickTodo={() =>
+              dispatch({
+                type: "COMPLETE_TODO",
+                id: todoItem._id || todoItem.tempId,
+              })
+            }
+            onClickDelete={() =>
+              dispatch({
+                type: "DELETE_TODO",
+                id: todoItem._id || todoItem.tempId,
+              })
+            }
           />
         ))}
       </ul>

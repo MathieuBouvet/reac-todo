@@ -4,17 +4,17 @@ import Button from "../Button";
 
 import "./Todo.css";
 
-const Todo = ({ id, text, done, clicksTodo }) => {
+const Todo = ({ id, text, done, onClickDelete, onClickTodo }) => {
   const [willBeRemoved, setWillBeRemoved] = useState(false);
   return (
     <li
       className={`todo ${done ? "done" : ""} ${
         willBeRemoved ? "will-be-removed" : ""
       }`}
-      onClick={e => clicksTodo(e, id, "done")}
+      onClick={() => onClickTodo()}
       onAnimationEnd={e => {
         if (willBeRemoved && e.animationName === "leave-slide") {
-          clicksTodo(e, id, "delete");
+          onClickDelete();
         }
       }}
     >
@@ -38,7 +38,8 @@ Todo.propTypes = {
   id: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   done: PropTypes.bool.isRequired,
-  clicksTodo: PropTypes.func.isRequired,
+  onClickDelete: PropTypes.func.isRequired,
+  onClickTodo: PropTypes.func.isRequired,
 };
 
 export default Todo;
