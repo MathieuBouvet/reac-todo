@@ -21,6 +21,11 @@ const todoListReducer = (state, action) => {
         }
         return newTodoItem;
       });
+    case "LOAD_LIST":
+      return action.newList.map(todoElem => {
+        const { _id: id, ...rest } = todoElem;
+        return { id, ...rest };
+      });
     default:
       return state;
   }
