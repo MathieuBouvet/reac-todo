@@ -28,10 +28,7 @@ const todoListReducer = (state, action) => {
 };
 
 const TodoListContainer = () => {
-  const [todoList, dispatch] = useReducer(
-    todoListReducer,
-    JSON.parse(window.localStorage.getItem("todoList")) || []
-  );
+  const [todoList, dispatch] = useReducer(todoListReducer, []);
 
   return <TodoList todoList={todoList} dispatch={dispatch} />;
 };
