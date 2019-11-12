@@ -8,16 +8,14 @@ const todoListReducer = (state, action) => {
     case "ADD_TODO":
       return [
         ...state,
-        { tempId: shortid.generate(), text: action.text, done: false },
+        { id: shortid.generate(), text: action.text, done: false },
       ];
     case "DELETE_TODO":
-      return state.filter(
-        todoItem => action.id !== (todoItem._id || todoItem.tempId)
-      );
+      return state.filter(todoItem => action.id !== todoItem.id);
     case "COMPLETE_TODO":
       return state.map(todoItem => {
         const newTodoItem = { ...todoItem };
-        if (action.id === (newTodoItem._id || newTodoItem.tempId)) {
+        if (action.id === newTodoItem.id) {
           newTodoItem.done = true;
         }
         return newTodoItem;

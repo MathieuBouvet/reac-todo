@@ -13,20 +13,20 @@ const TodoListDummy = ({ todoList, dispatch }) => {
       <ul className="todos-loaded">
         {todoList.map(todoItem => (
           <Todo
-            key={todoItem._id || todoItem.tempId}
-            id={todoItem._id || todoItem.tempId}
+            key={todoItem.id}
+            id={todoItem.id}
             done={todoItem.done}
             text={todoItem.text}
             onClickTodo={() =>
               dispatch({
                 type: "COMPLETE_TODO",
-                id: todoItem._id || todoItem.tempId,
+                id: todoItem.id,
               })
             }
             onClickDelete={() =>
               dispatch({
                 type: "DELETE_TODO",
-                id: todoItem._id || todoItem.tempId,
+                id: todoItem.id,
               })
             }
           />
