@@ -9,7 +9,12 @@ const TodoListDummy = ({ todoList }) => (
     {!todoList.length && "Rien à faire ;)"}
     <ul className="todos-loaded">
       {todoList.map(todoItem => (
-        <Todo {...todoItem} />
+        <Todo
+          key={todoItem._id || todoItem.tempId}
+          id={todoItem._id || todoItem.tempId}
+          done={todoItem.done}
+          text={todoItem.text}
+        />
       ))}
     </ul>
   </div>
