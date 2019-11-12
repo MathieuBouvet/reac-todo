@@ -23,10 +23,7 @@ const todoListReducer = (state, action) => {
         return newTodoItem;
       });
     case "LOAD_LIST":
-      return action.newList.map(todoElem => {
-        const { _id: id, ...rest } = todoElem;
-        return { id, ...rest };
-      });
+      return action.newList;
     default:
       return state;
   }
@@ -38,7 +35,11 @@ const TodoListContainer = ({ user }) => {
     .get(`http://localhost:3001/api/users/${user.id}`)
     .bearer(user.token)
     .onSuccess(response => {
-      dispatch({ type: "LOAD_LIST", newList: response.data.todos });
+      const newList = response.data.todos.map(todoItem => {
+        const { _id: id, ...rest } = todoItem;
+        return { id, ...rest };
+      });
+      dispatch({ type: "LOAD_LIST", newList });
     });
 
   useEffect(userRequest.send, []);
