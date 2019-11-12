@@ -1,8 +1,9 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import PropTypes from "prop-types";
 import shortid from "shortid";
 
 import TodoList from "./TodoListDummy";
+import useSendingRequest from "../../hooks/useSendingRequest";
 
 const todoListReducer = (state, action) => {
   switch (action.type) {
@@ -33,6 +34,14 @@ const todoListReducer = (state, action) => {
 
 const TodoListContainer = ({ user }) => {
   const [todoList, dispatch] = useReducer(todoListReducer, []);
+  const userRequest = useSendingRequest()
+    .get(`http://localhost:3001/api/users/${user.id}`)
+    .bearer(user.token)
+    .onSuccess(response => {
+      dispatch({ type: "LOAD_LIST", newList: response.data.todos });
+    });
+
+  useEffect(userRequest.send, []);
 
   return <TodoList todoList={todoList} dispatch={dispatch} />;
 };
