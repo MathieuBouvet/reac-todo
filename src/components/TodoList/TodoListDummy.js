@@ -35,7 +35,10 @@ const TodoListDummy = ({ todoList, dispatch }) => {
       <AddTodo
         addTodoValue={newTodoText}
         changeValue={e => setNewTodoText(e.target.value)}
-        addButtonClick={() => dispatch({ type: "ADD_TODO", text: newTodoText })}
+        addButtonClick={() => {
+          setNewTodoText("");
+          dispatch({ type: "ADD_TODO", text: newTodoText });
+        }}
       />
     </div>
   );
