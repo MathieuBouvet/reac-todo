@@ -1,7 +1,8 @@
 import React from "react";
+import TodoList from "./TodoListDummy";
 
 const TodoListContainer = () => {
-  return <div></div>;
+  return <TodoList todoList={[]} />;
 };
 
 export default TodoListContainer;
