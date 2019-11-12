@@ -10,6 +10,10 @@ const todoListReducer = (state, action) => {
         ...state,
         { tempId: shortid.generate(), text: action.text, done: false },
       ];
+    case "DELETE_TODO":
+      return state.filter(
+        todoItem => action.id !== (todoItem._id || todoItem.tempId)
+      );
     default:
       return state;
   }
