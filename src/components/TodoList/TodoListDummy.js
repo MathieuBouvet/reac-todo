@@ -50,7 +50,6 @@ TodoListDummy.propTypes = {
       id: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
       done: PropTypes.bool.isRequired,
-      clicksTodo: PropTypes.func.isRequired,
     })
   ).isRequired,
   dispatch: PropTypes.func.isRequired,
