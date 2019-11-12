@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+import PropTypes from "prop-types";
 import shortid from "shortid";
 
 import TodoList from "./TodoListDummy";
@@ -25,10 +26,17 @@ const todoListReducer = (state, action) => {
   }
 };
 
-const TodoListContainer = () => {
+const TodoListContainer = ({ user }) => {
   const [todoList, dispatch] = useReducer(todoListReducer, []);
 
   return <TodoList todoList={todoList} dispatch={dispatch} />;
+};
+
+TodoListContainer.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    token: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default TodoListContainer;
