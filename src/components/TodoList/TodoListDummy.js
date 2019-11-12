@@ -1,24 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import Todo from "../Todo";
+import AddTodo from "../AddTodo";
 import "./TodoList.css";
 
-const TodoListDummy = ({ todoList }) => (
-  <div className="todo-list">
-    {!todoList.length && "Rien à faire ;)"}
-    <ul className="todos-loaded">
-      {todoList.map(todoItem => (
-        <Todo
-          key={todoItem._id || todoItem.tempId}
-          id={todoItem._id || todoItem.tempId}
-          done={todoItem.done}
-          text={todoItem.text}
-        />
-      ))}
-    </ul>
-  </div>
-);
+const TodoListDummy = ({ todoList, dispatch }) => {
+  const [newTodoText, setNewTodoText] = useState("");
+  return (
+    <div className="todo-list">
+      {!todoList.length && "Rien à faire ;)"}
+      <ul className="todos-loaded">
+        {todoList.map(todoItem => (
+          <Todo
+            key={todoItem._id || todoItem.tempId}
+            id={todoItem._id || todoItem.tempId}
+            done={todoItem.done}
+            text={todoItem.text}
+          />
+        ))}
+      </ul>
+      <AddTodo
+        addTodoValue={newTodoText}
+        changeValue={e => setNewTodoText(e.target.value)}
+        addButtonClick={() => dispatch({ type: "ADD_TODO", text: newTodoText })}
+      />
+    </div>
+  );
+};
 
 TodoListDummy.propTypes = {
   todoList: PropTypes.arrayOf(
@@ -29,5 +38,6 @@ TodoListDummy.propTypes = {
       clicksTodo: PropTypes.func.isRequired,
     })
   ).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 export default TodoListDummy;
