@@ -33,7 +33,6 @@ const TodoListContainer = ({ user }) => {
   const [todoList, dispatch] = useReducer(todoListReducer, []);
   const userRequest = useSendingRequest()
     .get(`http://localhost:3001/api/users/${user.id}`)
-    .bearer(user.token)
     .onSuccess(response => {
       const newList = response.data.todos.map(todoItem => {
         const { _id: id, ...rest } = todoItem;
@@ -50,7 +49,6 @@ const TodoListContainer = ({ user }) => {
 TodoListContainer.propTypes = {
   user: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    token: PropTypes.string.isRequired,
   }).isRequired,
 };
 
