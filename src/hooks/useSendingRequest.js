@@ -7,6 +7,7 @@ function useSendingRequest() {
     url: "",
     timeout: 5000,
     headers: {},
+    withCredentials: true,
   };
   let onSuccess = null;
   let onError = null;
