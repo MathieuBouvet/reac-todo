@@ -13,25 +13,25 @@ import "./forms.css";
 function useAuthentication() {
   const [user, setUser] = useState({
     username: localStorage.username || "",
-    token: localStorage.token || "",
+    csrfToken: localStorage.csrfToken || "",
     id: localStorage.id || "",
   });
   return {
     ...user,
-    isLoggedIn: user.username !== "" && user.token !== "" && user.id !== "",
+    isLoggedIn: user.username !== "" && user.csrfToken !== "" && user.id !== "",
     logIn: response => {
-      const { username, token, user: id } = response.data;
+      const { username, csrfToken, user: id } = response.data;
       localStorage.username = username;
-      localStorage.token = token;
+      localStorage.csrfToken = csrfToken;
       localStorage.id = id;
-      setUser({ username, token, id });
+      setUser({ username, csrfToken, id });
       navigate("/");
     },
     logOut: () => {
       localStorage.username = "";
-      localStorage.token = "";
+      localStorage.csrfToken = "";
       localStorage.id = "";
-      setUser({ username: "", token: "", id: "" });
+      setUser({ username: "", csrfToken: "", id: "" });
       navigate("/");
     },
   };
