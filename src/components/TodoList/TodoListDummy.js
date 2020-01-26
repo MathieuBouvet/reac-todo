@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 
 import Todo from "../Todo";
 import AddTodo from "../AddTodo";
+import Button from "../Button";
 import "./TodoList.css";
 
-const TodoListDummy = ({ todoList, dispatch }) => {
+const TodoListDummy = ({ todoList, dispatch, saveTodoList }) => {
   const [newTodoText, setNewTodoText] = useState("");
   return (
     <div className="todo-list">
@@ -40,6 +41,7 @@ const TodoListDummy = ({ todoList, dispatch }) => {
           dispatch({ type: "ADD_TODO", text: newTodoText });
         }}
       />
+      <Button onClick={saveTodoList}>Sauvegarder</Button>
     </div>
   );
 };

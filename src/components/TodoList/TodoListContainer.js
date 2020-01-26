@@ -41,9 +41,22 @@ const TodoListContainer = ({ user }) => {
       dispatch({ type: "LOAD_LIST", newList });
     });
 
-  useEffect(userRequest.send, []);
+  const saveRequest = useSendingRequest()
+    .put(`http://localhost:3001/api/users/${user.id}/todos`)
+    .headers({ "x-csrf-token": user.csrfToken })
+    .onSuccess(response => {
+      console.log("saved");
+    });
 
-  return <TodoList todoList={todoList} dispatch={dispatch} />;
+  useEffect(userRequest.send, [user.id, user.token]);
+
+  return (
+    <TodoList
+      todoList={todoList}
+      dispatch={dispatch}
+      saveTodoList={() => saveRequest.send(todoList)}
+    />
+  );
 };
 
 TodoListContainer.propTypes = {
